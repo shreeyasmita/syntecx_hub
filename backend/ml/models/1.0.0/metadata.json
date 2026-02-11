@@ -1,0 +1,105 @@
+{
+  "best_model": "linear_regression",
+  "model_scores": {
+    "linear_regression": {
+      "train_rmse": 25398.25954970642,
+      "test_rmse": 24486.627626769685,
+      "train_r2": 0.9334086459469073,
+      "test_r2": 0.9412666685571345,
+      "train_size": 1600,
+      "test_size": 400
+    },
+    "random_forest": {
+      "train_rmse": 18213.637095924332,
+      "test_rmse": 38321.49089659402,
+      "train_r2": 0.9657545174707909,
+      "test_r2": 0.856149466957544,
+      "train_size": 1600,
+      "test_size": 400
+    },
+    "xgboost": {
+      "train_rmse": 9892.459370846844,
+      "test_rmse": 32875.2507182849,
+      "train_r2": 0.9898977413811181,
+      "test_r2": 0.8941319707227102,
+      "train_size": 1600,
+      "test_size": 400
+    }
+  },
+  "feature_names": [
+    "area_sqft",
+    "bedrooms",
+    "bathrooms",
+    "age_years",
+    "amenities_score",
+    "distance_to_center",
+    "school_rating",
+    "crime_index",
+    "market_trend",
+    "environmental_score",
+    "property_type_multi_family",
+    "property_type_single_family",
+    "property_type_townhouse"
+  ],
+  "training_date": "2026-02-07T15:41:09.713134",
+  "config": {
+    "model_versions": [
+      "1.0.0"
+    ],
+    "default_version": "1.0.0",
+    "feature_columns": [
+      "area_sqft",
+      "bedrooms",
+      "bathrooms",
+      "age_years",
+      "property_type_single_family",
+      "property_type_condo",
+      "property_type_townhouse",
+      "property_type_multi_family",
+      "amenities_score",
+      "distance_to_center",
+      "school_rating",
+      "crime_index",
+      "market_trend",
+      "environmental_score"
+    ],
+    "categorical_features": [
+      "property_type"
+    ],
+    "numerical_features": [
+      "area_sqft",
+      "bedrooms",
+      "bathrooms",
+      "age_years",
+      "amenities_score",
+      "distance_to_center",
+      "school_rating",
+      "crime_index",
+      "market_trend",
+      "environmental_score"
+    ],
+    "random_forest_params": {
+      "n_estimators": 100,
+      "max_depth": 15,
+      "min_samples_split": 5,
+      "min_samples_leaf": 2,
+      "random_state": 42,
+      "n_jobs": -1
+    },
+    "xgboost_params": {
+      "n_estimators": 100,
+      "max_depth": 6,
+      "learning_rate": 0.1,
+      "random_state": 42,
+      "n_jobs": -1
+    },
+    "linear_regression_params": {
+      "fit_intercept": true
+    },
+    "test_size": 0.2,
+    "random_state": 42,
+    "cv_folds": 5,
+    "min_r2_threshold": 0.7,
+    "min_rmse_threshold": 50000
+  }
+}

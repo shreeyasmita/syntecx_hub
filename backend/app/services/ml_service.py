@@ -67,9 +67,6 @@ class MLServices:
             # Make prediction
             prediction = model_trainer.best_model.predict(processed_features)[0]
             
-            # Calculate confidence interval
-            lower_bound, upper_bound = model_evaluator.confidence_interval([prediction])
-            
             # Get feature importance
             explainer = ModelExplainer(model_trainer.best_model, feature_pipeline.feature_names)
             feature_importance = explainer.get_feature_importance()
@@ -77,9 +74,20 @@ class MLServices:
             # Calculate confidence score
             confidence_score = explainer.calculate_confidence_score(feature_importance)
             
-            # Generate explanation
-            explanation = explainer.generate_explanation(
-                prediction, request_dict, feature_importance
+            # Calculate price range based on confidence (1 - confidence) × 10% uncertainty
+            uncertainty_factor = (1 - confidence_score) * 0.10
+            price_uncertainty = prediction * uncertainty_factor
+            lower_bound = prediction - price_uncertainty
+            upper_bound = prediction + price_uncertainty
+            
+            # Ensure min and max are different
+            if lower_bound == upper_bound:
+                lower_bound = prediction * 0.95  # 5% below
+                upper_bound = prediction * 1.05  # 5% above
+            
+            # Generate explanation with proper feature impact analysis
+            explanation = explainer.generate_detailed_explanation(
+                prediction, request_dict, feature_importance, confidence_score
             )
             
             processing_time = time.time() - start_time

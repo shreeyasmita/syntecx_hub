@@ -5,8 +5,8 @@ import "./globals.css";
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
-  title: "SynTeCX House Price Predictor",
-  description: "AI-powered house price prediction platform with explainable insights",
+  title: "Smart Property Valuation | AI-Powered Real Estate Pricing",
+  description: "Get instant, accurate home valuations powered by machine learning with transparent insights and feature importance analysis",
 };
 
 export default function RootLayout({

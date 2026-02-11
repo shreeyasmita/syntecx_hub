@@ -73,8 +73,7 @@ class MLConfig:
             
         if self.linear_regression_params is None:
             self.linear_regression_params = {
-                'fit_intercept': True,
-                'normalize': False
+                'fit_intercept': True
             }
 
 
